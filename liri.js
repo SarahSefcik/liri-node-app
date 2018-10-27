@@ -8,7 +8,7 @@
 
 var Movie = require("./movie");
 
-// Create a new TV object
+// Create a new Movie object
 var movie = new Movie();
 
 // Grab search command line argument
@@ -21,12 +21,12 @@ if (!search) {
   search = "movie-this";
 }
 
-// By default, if no search term is provided, search for "Andy Griffith"
+// By default, if no search term is provided, search for "Mr. Nobody"
 if (!term) {
   term = "Mr. Nobody";
 }
 
-// Print whether searching for a show or actor, print the term as well
+// Print searching for a movie, print the term as well
 
 console.log("Searching for Movie");
 movie.findMovie(term);

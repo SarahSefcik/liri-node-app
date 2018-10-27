@@ -2,12 +2,12 @@ var request = require("request");
 var fs = require("fs");
 // var omdb = require("omdb")
 
-// Create the TV constructor
+// Create the Movie constructor
 var Movie = function () {
-  // divider will be used as a spacer between the tv data we print in log.txt
-  var divider = "\n------------------------------------------------------------\n\n";
+  // divider will be used as a spacer between the movie data printed on the console and in log.txt
+  var divider = "\n\n------------------------------------------------------------\n\n";
 
-  // findShow takes in the name of a tv show and searches the tvmaze API
+  // findMovie takes in the name of a movie and searches the OMDb site
   this.findMovie = function (movie) {
     var URL = "http://www.omdbapi.com/?apikey=trilogy&t=" + movie;
 
@@ -15,26 +15,26 @@ var Movie = function () {
       // Parse the response body (string) to a JSON object
       var jsonData = JSON.parse(body);
       
-      // showData ends up being the string containing the show data we will print to the console
+      // movieData ends up being the string containing the movie data we will print to the console
       var movieData = [
         "Movie Title: " + jsonData.Title,
         "Year: " + jsonData.Year,
         "IMDb Rating: " + jsonData.imdbRating,
         "Rotten Tomatoes Rating: " + jsonData.Ratings[1].Value,
-        // "Country: " + jsonData.network.name,
-        // "Language: " + jsonData.summary,
-        // "Plot: " + jsonData.summary,
-        // "Actors: " + jsonData.summary,
-        
+        "Country: " + jsonData.Country,
+        "Language: " + jsonData.Language,
+        "Plot: " + jsonData.Plot,
+        "Actors: " + jsonData.Actors,
+
       ].join("\n");
 
-      console.log(movieData + divider);
+      // console.log(movieData + divider);
 
-      // Append showData and the divider to log.txt, print showData to the console
-      // fs.appendFile("log.txt", movieData + divider, function (err) {
-      //   if (err) throw err;
-      //   console.log(movieData);
-      // });
+      // Append movieData and the divider to log.txt, print movieData to the console
+      fs.appendFile("log.txt", movieData + divider, function (err) {
+        if (err) throw err;
+        console.log(movieData + divider);
+      });
     });
   };
 };
