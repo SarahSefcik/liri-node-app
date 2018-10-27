@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/SarahSefcik/liri-node-app/issues"
   },
-  "homepage": "https://github.com/SarahSefcik/liri-node-app#readme"
+  "homepage": "https://github.com/SarahSefcik/liri-node-app#readme",
+  "dependencies": {
+    "request": "^2.88.0"
+  }
 }
